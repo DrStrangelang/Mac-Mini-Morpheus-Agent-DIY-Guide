@@ -2,7 +2,7 @@
 
 A complete, tested guide to building an always-on AI agent with its own identity, crypto wallet, and three-tier inference fallback chain -- powered by a Mac mini and the Morpheus decentralized AI network.
 
-Every step in this guide was tested on real hardware with real money. 12 gotchas were hit during the build and fixes for all of them are documented.
+Every step in this guide was tested on real hardware with real money. 13 gotchas were hit during the build and fixes for all of them are documented.
 
 ---
 
@@ -92,6 +92,7 @@ These are real bugs from the original build, with fixes:
 9. **Public RPC stale nonce** -- sequential Safe transactions fail on public RPCs. Use a private RPC.
 10. **Treasury scripts require SAFE_RPC** -- not optional despite what docs said. No public fallback by design.
 11. **Treasury keychain defaults won't match your setup** -- override with env vars.
+12. **Treasury install.sh missing deps at destination** -- daemon fails with ERR_MODULE_NOT_FOUND. Run `npm install viem` in `~/morpheus/`.
 
 ## Core Principles
 

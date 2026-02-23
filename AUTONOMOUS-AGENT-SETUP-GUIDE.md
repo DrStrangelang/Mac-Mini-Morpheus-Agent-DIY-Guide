@@ -668,6 +668,8 @@ These are real issues encountered during the original build:
 
 **12. Treasury keychain defaults don't match your setup.** The safe-agent-treasury scripts default to keychain entries named `everclaw-agent` / `everclaw-wallet-key` in a dedicated keychain at `~/Library/Keychains/everclaw.keychain-db`. If you stored your wallet key under different names or in the login keychain, you'll get "Could not retrieve wallet key from Keychain" errors. Fix: set `SAFE_KEYCHAIN_ACCOUNT`, `SAFE_KEYCHAIN_SERVICE`, and `SAFE_KEYCHAIN_DB` in `~/morpheus/.env` to match your actual keychain configuration.
 
+**13. Treasury install.sh doesn't install dependencies at the daemon destination.** `install.sh` copies `agent-treasury-refill.mjs` to `~/morpheus/` but only installs `viem` in the repo's `node_modules/`. The launchd daemon runs the copy, which can't find `viem`, failing with `ERR_MODULE_NOT_FOUND` every 6 hours. Fix: run `cd ~/morpheus && npm install viem` after running `install.sh`. (A fix has been submitted to the safe-agent-treasury repo.)
+
 ---
 
 ## Build Progress Tracker
